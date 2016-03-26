@@ -149,4 +149,13 @@ error: Err String
 ------------------------------------------
   ---------------------
     ---------------------
-      
+
+
+--All operators are functions in Elm.
+    5 + 6 ,  -- infix style
+    (+) 5 6
+    (:=) --- need  to import decoder
+      <function> : String -> Json.Decode.Decoder a -> Json.Decode.Decoder a
+    "Better idea not to define operators..."
+
+_________
