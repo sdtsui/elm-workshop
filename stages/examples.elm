@@ -11,7 +11,7 @@
 
 --funcs
 List.length shelfNames
-
+-- order of declarations don't matter
 
 
 --operators
@@ -22,4 +22,20 @@ parens for precedence
 
 
 -- node [list of attributes] [list of children]
---commas
+-- leading commas
+
+-- currying related to hindley milner
+
+
+-- elm live:
+  -- rebuild and refresh on save
+  -- automatically formats for you
+
+
+-- type alias
+  "More concide "
+-- type annotation 
+
+-- compiling things...
+  elm make Main.elm --warn --output /dev/null
+

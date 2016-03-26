@@ -2,6 +2,9 @@ module Main (..) where
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
+--import VirtualDom exposing (..)
+import Array
+
 
 
 type alias Model =
@@ -20,9 +23,7 @@ type alias SearchResult =
 type alias ResultId =
   Int
 
-
-{-| TODO add a type annotation to this function
--}
+model : Model
 model =
   { query = "tutorial"
   , results =
@@ -50,8 +51,7 @@ model =
   }
 
 
-{-| TODO add a type annotation to this function
--}
+view : Model -> Html
 view model =
   div
     [ class "content" ]
@@ -62,12 +62,13 @@ view model =
         ]
     , ul
         [ class "results" ]
-        [{- TODO use model.results and viewSearchResults to display results -}]
+        -- attempt 1
+        --, (List.map (\result -> viewSearchResult result) model.results)
+        (List.map viewSearchResult model.results)
+        
     ]
 
-
-{-| TODO add a type annotation to this function
--}
+viewSearchResult: SearchResult -> Html
 viewSearchResult result =
   li
     []
@@ -79,7 +80,6 @@ viewSearchResult result =
     ]
 
 
-{-| TODO add a type annotation to this function
--}
+main : Html
 main =
   view model
