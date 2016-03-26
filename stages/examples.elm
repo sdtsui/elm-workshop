@@ -71,3 +71,82 @@ parens for precedence
   List, signal, address
   -- no mixed list, can't get errors when iterating
 
+
+{-
+-- Union type :  ways to use
+  simplest: enumeration of values. i.e. Bool = True | False ---- all unionType values have to be capitalized.
+    --- useful in StartApp:
+        - compiler checks if all types are used
+        - self documenting, for new developers
+        - asks for when they're out of sync...
+           *** Idea: Checking all action types. *** 
+________________________
+
+
+-}
+List.head [1,2,3]
+
+type Maybe =
+    Nothing | Just value
+
+Elm is very explicit about corner cases (null, undefined). 
+  - "It's because all of Elm's APIs are defined such that instead of crashing when you don't catch it, it will tell you."
+  "In our 6 months of using Elm at work, we have not had a single runtime exception make it through to production."
+  maybe: container that holds 0 values (nothing)
+  or one value (Just)
+
+--Type paramaters, a
+> List.head
+<function> : List a -> Maybe.Maybe a
+   -- only rule is they have to be consistent (i.e. the same type)
+> List.head [1,2,3]
+Just 1 : Maybe.Maybe number
+  --- ### There are 3 exceptions to this
+    {-
+      1. Number (can be decomposed into float and int)
+        > ceiling
+        <function: ceil> : Float -> Int
+        > floor
+        <function: floor> : Float -> Int
+      2. Appendable: combine: either strings, lists, arrays. 
+        Main differemnce: 
+          - list: linked list, generally more efficient for operations in elm ... 
+            ```
+            import Array
+            Array.formList [1,2,3]
+            Array.get 2 (Array.fromList [1,2,3])
+            ```
+          - array: array, allows you to access things by positions
+      3. Comparable: sets, dictionary 
+    }
+
+
+-- decoders: 
+http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Json-Decode
+
+import 
+nameAndAge : Decoder (String,Int)
+nameAndAge =
+    object2 (,)
+      ("name" := string)
+      ("age" := int)
+
+      just/nothing
+      ok/error
+
+-}
+
+
+---------------------
+  ---------------------
+    ---------------------
+
+decoder : Decoder SearchResult
+success: OK searchResult
+error: Err String
+-- types : like searchResult, can be thought of as convenience constructors / functions.
+
+------------------------------------------
+  ---------------------
+    ---------------------
+      

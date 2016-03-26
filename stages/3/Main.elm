@@ -92,7 +92,8 @@ viewSearchResult address result =
         [ text "X" ]
     ]
 
-
+-- can parameterize 
+  -- unlike records. each union type constructor is more flexible. 
 type alias Action =
   { 
     actionType: String
