@@ -69,6 +69,8 @@ view address model =
     , input
         [ class "search-query"
           -- TODO when we receive onInput, set the query in the model
+        --, onInput address (\query => setQuery query)
+        , onInput address SetQuery
         , defaultValue model.query
         ]
         []
@@ -81,8 +83,9 @@ view address model =
 
 onInput : Address Action -> (String -> Action) -> Attribute
 onInput address wrap =
+  -- event.target.value. function is SetQuery: takes a string, returns action
   on "input" targetValue (\val -> Signal.message address (wrap val))
-
+  -- val above
 
 defaultValue str =
   property "defaultValue" (Json.Encode.string str)
@@ -98,7 +101,7 @@ viewSearchResult address result =
         [ text result.name ]
     , button
         -- TODO add an onClick handler that sends a DeleteById action
-        [ class "hide-result" ]
+        [ class "hide-result", onClick address (DeleteById result.id) ]
         [ text "X" ]
     ]
 
@@ -110,10 +113,14 @@ type Action
 
 update : Action -> Model -> Model
 update action model =
+  case action of
+    SetQuery query ->
+      -- can log here
+      {model | query = query}
+    DeleteById id ->
+      { model | results = List.filter (\result -> result.id /= id) model.results}
   -- TODO if we get a SetQuery action, use it to set the model's query field,
   -- and if we get a DeleteById action, delete the appropriate result
-  model
-
 
 main =
   StartApp.start
