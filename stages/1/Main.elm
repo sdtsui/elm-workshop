@@ -8,7 +8,7 @@ model =
   { result =
       { id = 1
       , name = "TheSeamau5/elm-checkerboardgrid-tutorial"
-      , stars = 66
+      , stars = 99
       , link = "https://github.com/TheSeamau5/elm-checkerboardgrid-tutorial"
       }
   }
