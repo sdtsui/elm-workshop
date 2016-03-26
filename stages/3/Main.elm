@@ -9,7 +9,6 @@ import Signal exposing (Address)
 {-
 --hint: 
   -- List.filter (\num -> num >2) [1,2,3]
-
 -}
 
 type alias Model =
@@ -78,7 +77,7 @@ viewSearchResult address result =
     removeAction : Action
     removeAction = { 
       actionType = "REMOVE"
-      , id = result.id
+      , payload = result.id
     }
   in 
   li
@@ -97,17 +96,16 @@ viewSearchResult address result =
 type alias Action =
   { 
     actionType: String
-    ,  id : Int 
+    ,  payload : ResultId 
   }
 
 
 update : Action -> Model -> Model
 update action model =
-  if action.actionType == "REMOVE" then
-    { model | results = List.filter (\result -> result.id /= action.id) model.results}
+  if (Debug.log "actiontype :" action.actionType) == "REMOVE" then
+    --http://puu.sh/nUZjR/8f7064da0b.png
+    { model | results = List.filter (\result -> result.id /= action.payload) model.results}
   else
-  -- TODO if we receive a DELETE_BY_ID action,
-  -- build a new model without the given ID present anymore.
   model
 
 
