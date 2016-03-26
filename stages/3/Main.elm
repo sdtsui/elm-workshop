@@ -6,6 +6,11 @@ import Html.Events exposing (..)
 import StartApp.Simple as StartApp
 import Signal exposing (Address)
 
+{-
+--hint: 
+  -- List.filter (\num -> num >2) [1,2,3]
+
+-}
 
 type alias Model =
   { query : String
@@ -69,6 +74,13 @@ view address model =
 
 viewSearchResult : Address Action -> SearchResult -> Html
 viewSearchResult address result =
+  let
+    removeAction : Action
+    removeAction = { 
+      actionType = "REMOVE"
+      , id = result.id
+    }
+  in 
   li
     []
     [ span [ class "star-count" ] [ text (toString result.stars) ]
@@ -76,19 +88,24 @@ viewSearchResult address result =
         [ href ("https://github.com/" ++ result.name), target "_blank" ]
         [ text result.name ]
     , button
-        -- TODO add an onClick handler that sends a DELETE_BY_ID action
-        [ class "hide-result" ]
+        [ class "hide-result"
+        , onClick address removeAction ]
         [ text "X" ]
     ]
 
 
 type alias Action =
-  { -- TODO implement this type alias
+  { 
+    actionType: String
+    ,  id : Int 
   }
 
 
 update : Action -> Model -> Model
 update action model =
+  if action.actionType == "REMOVE" then
+    { model | results = List.filter (\result -> result.id /= action.id) model.results}
+  else
   -- TODO if we receive a DELETE_BY_ID action,
   -- build a new model without the given ID present anymore.
   model
