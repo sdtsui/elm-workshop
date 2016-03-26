@@ -39,3 +39,35 @@ parens for precedence
 -- compiling things...
   elm make Main.elm --warn --output /dev/null
 
+
+--using let
+  let 
+    --declarations
+  in 
+    --expression to evaluate
+  --* 1/2 exceptions for which whitespace mattters, indentation not aligned
+  -- only 3 scoping rules:
+    -- top level declarations
+    -- function arguments
+    -- local scoping through let
+    -- later: case expressions
+
+
+
+
+-- views are rebuilt : does behind-the-scenes diffing
+
+-- record update syntax : 
+    { model | numShelves = model.numShelves + }
+
+-- boilerplate: Signals / Addresses, don't worry about them ::: 
+  Signal: value that changes over time (HTML in this case)
+    - read only
+  Address: points to a signal
+    - write only
+    --"changes in elm are all done through return values"
+
+-- paramaterized type:
+  List, signal, address
+  -- no mixed list, can't get errors when iterating
+
