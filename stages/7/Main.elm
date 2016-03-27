@@ -56,3 +56,6 @@ decodeGithubResponse value =
 
 
 port githubResponse : Signal Json.Encode.Value
+
+-- Qs: What are the methods on Elm : worker, embed, and etc? 
+-- 

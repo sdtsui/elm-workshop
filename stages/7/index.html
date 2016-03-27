@@ -31,11 +31,11 @@ console.log("Script")
     search.repositories({}, function (err, repositories) {
       console.log("Got response", repositories);
 
-      app.ports.githubSearch.send(repositories);
+      app.ports.githubResponse.send(repositories);
     });
   }
 
-  TODO app.ports.githubSearch.subscribe(searchGithub);
+  app.ports.githubSearch.subscribe(searchGithub);
 </script>
 
 </html>
