@@ -84,9 +84,44 @@ ___________________________________
 ___________________________________
 
 
-Piping: 
+Pipelining example: 
   [1,2,3] 
     |> List.map (\num -> num * 2) --last arg [2, 4, 6]
     |> List.map (\num -> num > 2) -- last arg [4,6]
     |> List.map negate -- last arg [-4, -6]
     |> List.reverse -- [-6, -4]
+    |> Set.fromList
+    |> Set.toList
+    |> List.map toString
+    |> List.map (\str -> li [] [text str])
+    |> ul []
+
+Dictionary Example: 
+  JS { } is between Dict and Record
+    . access : Record. Not possible with dict 
+    Dict: different key types (not just string), any type of value (but must be consistent)
+
+
+  nums = 
+    [0, 1, 2, 3, 4, 5, 6]
+      |> List.map (\num -> (num, toString (num * 2) ))
+      |> Dict.fromList
+      -- case 1 
+      |> Dict.get 6 -- returns maybe. Just, 6's value in this case
+
+      -- case 2  
+      |> Dict.get 99 -- returns nothing
+      -- case 3 
+      |> Dict.get "ads" -- type error
+
+
+      other methods:
+        Dict.insert 101 "dalmations"
+
+        Build: 
+          empty
+          singlton : one key value pair
+
+
+          foo : Dict comprable (Dict comparable' someOtherValue)
+          "all of the children in an entire dict have to have the same type of value"
