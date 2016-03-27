@@ -7,10 +7,8 @@ import Json.Decode exposing (Decoder, (:=))
 import Signal exposing (Address)
 import Dict exposing (Dict)
 
-
 type alias ResultId =
   Int
-
 
 type alias Model =
   { id : ResultId
@@ -28,8 +26,8 @@ decoder =
     ("stargazers_count" := Json.Decode.int)
 
 
-view : Address a -> Model -> Html
-view address result =
+view : (ResultId -> action) -> Address action -> Model -> Html
+view wrap address result =
   li
     []
     [ span [ class "star-count" ] [ text (toString result.stars) ]
@@ -40,6 +38,7 @@ view address result =
         [ text result.name ]
     , button
         -- TODO onClick, send a delete action to the address
-        [ class "hide-result" ]
+        -- onClick address   (DeleteById result.id)
+        [ class "hide-result", onClick address (wrap result.id) ]
         [ text "X" ]
     ]

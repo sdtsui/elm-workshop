@@ -5,7 +5,7 @@ import ElmHub exposing (..)
 import Effects exposing (Effects)
 import Task exposing (Task)
 import Html exposing (Html)
-
+-- implement wrap, for a reusable component
 
 main : Signal Html
 main =

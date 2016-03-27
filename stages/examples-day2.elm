@@ -145,3 +145,18 @@ ___________________________________
     List.filter (not >> .isVisible)
     |> pipline operator <|    -- val | op
     >> composition operator <<    -- >> first
+
+___________________________________
+___________________________________
+composing, modules
+    -- start with something that is in a main file
+
+    anytime we have shared functionality that needs part-specific data
+    - wrap, with some new function that describes that data
+
+
+done: 
+  reusable component
+
+recursion over for / while loops/ mutation
+    

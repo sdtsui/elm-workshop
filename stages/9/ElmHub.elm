@@ -11,8 +11,7 @@ import Json.Decode exposing (Decoder, (:=))
 import Json.Encode
 import Signal exposing (Address)
 import Dict exposing (Dict)
-import SearchResult
-
+import SearchResult exposing (..)
 
 searchFeed : String -> Task x Action
 searchFeed query =
@@ -33,7 +32,8 @@ searchFeed query =
 responseDecoder : Decoder (List SearchResult.Model)
 responseDecoder =
   -- TODO make use of SearchResult's decoder
-  Json.Decode.succeed []
+  --Json.Decode.succeed []
+  "items" := Json.Decode.list SearchResult.decoder
 
 
 type alias Model =
@@ -71,7 +71,8 @@ viewSearchResults address results =
   results
     |> Dict.values
     |> List.sortBy (.stars >> negate)
-    |> List.map (\_ -> div [] [ text "TODO replace this line view logic from SearchResult" ])
+    --|> List.map (\_ -> div [] [ text "TODO replace this line view logic from SearchResult" ])
+    |> List.map (\result -> SearchResult.view DeleteById address result)
 
 
 onInput address wrap =

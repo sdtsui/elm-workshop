@@ -6,7 +6,7 @@
 6 - testing
 7 - interop: embed (main, entryPoint, initialState) , workers
 8 - pipelining, sets, dictionaries
-9 - 
-10
+9 - modules, imports, circular imports: for reusable components
+10 - 
 misc, lookups: 
   - converting react components / css into -> Elm views.
