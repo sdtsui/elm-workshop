@@ -1,3 +1,5 @@
+elm: "Model View Update" :
+  
 1 - basics (infix style), boilerplate, Html
 2 - syntax, operators
 3 - actions, type aliases, types, main, startapp
@@ -10,3 +12,6 @@
 10 - 
 misc, lookups: 
   - converting react components / css into -> Elm views.
+
+11 - (subject to change, when signals removed) --
+    creating 'thick' components with their own models, views, update
