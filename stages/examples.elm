@@ -19,18 +19,13 @@ List.length shelfNames
 +, addition
 -- comments
 parens for precedence
-
-
 -- node [list of attributes] [list of children]
 -- leading commas
-
 -- currying related to hindley milner
-
 
 -- elm live:
   -- rebuild and refresh on save
   -- automatically formats for you
-
 
 -- type alias
   "More concide "
@@ -38,7 +33,6 @@ parens for precedence
 
 -- compiling things...
   elm make Main.elm --warn --output /dev/null
-
 
 --using let
   let 
@@ -51,9 +45,6 @@ parens for precedence
     -- function arguments
     -- local scoping through let
     -- later: case expressions
-
-
-
 
 -- views are rebuilt : does behind-the-scenes diffing
 
@@ -71,7 +62,6 @@ parens for precedence
   List, signal, address
   -- no mixed list, can't get errors when iterating
 
-
 {-
 -- Union type :  ways to use
   simplest: enumeration of values. i.e. Bool = True | False ---- all unionType values have to be capitalized.
@@ -81,8 +71,6 @@ parens for precedence
         - asks for when they're out of sync...
            *** Idea: Checking all action types. *** 
 ________________________
-
-
 -}
 List.head [1,2,3]
 
@@ -192,3 +180,13 @@ elm effects:  send tasks, elm runs them behind the scenes (i.e. a batch of tasks
 > (|>)
 <function> : a -> (a -> b) -> b
 --right pipe: ---EXPRESSION TO PASS, ONCE EVALUATED--- |> ---FUNCTION TO RUN, PASSING EXPRESSION AS LAST PARAM---
+
+
+
+
+{-
+  Biggest limitations:
+      javaScript interop: 
+          - talk to JS, much like you talk to a server
+          - can't trust JS, without the guarantees from the compiler.
+-}
