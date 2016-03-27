@@ -160,3 +160,49 @@ done:
 
 recursion over for / while loops/ mutation
     
+
+
+desstructruring: "concisely describe elaborate structures without extraneous function calls"
+        :: prepend operator
+
+
+
+    ( x, y ) :: [] ->
+      x
+      y
+    
+    first :: [] ->
+      first :: dropNegatives rest
+
+-- recursive implementation
+    first :: rest ->
+      if first >= 0 then
+        first :: dropNegatives rest
+      else
+        dropNegatives rest
+-- advantages
+  -- more concise
+  -- adds new function to the stack :: bounded by memory 
+    -- Solve with: Tail Recursion : translate into a while loop: 
+        --either: 
+            -- individual value
+            -- ends with a call to itself
+            -- NOT an expression that depends on another part :: 
+
+example of a tail recursive helper function: elm's compiles this into a while loop
+
+
+  dropNegativesHelp :  List number -> List number -> List number
+  dropNegativesHelp result remaining =
+    case remaining of
+      [] ->
+        result
+
+      first :: rest ->
+        if first >0 then
+          dropNegativesHelper (first :: result) rest
+        else
+          dropNegativesHelper result rest
+
+          ::  prepend
+          ++ append
