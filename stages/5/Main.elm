@@ -22,6 +22,7 @@ app =
   StartApp.start
     { view = view
     , update = update
+    -- Q: why not just go Search? is it because we don't have any initial model to pull from ?
     , init = ( initialModel, Effects.task (searchFeed initialModel.query) )
     -- example of a search: fully featured/ used in production
     , inputs = []
@@ -29,6 +30,13 @@ app =
 -- hints:
     -- get decoder working: everying shows up on page
     -- THEN, type in ::: page should update
+
+-- Tasks: describe what you want done
+-- Effects: how you want them done
+  -- effects.batch, similar to promise.all (instead of effects.task, chained together)
+  -- effects.tick, (like rAF)
+  -- effects. -- for graphQL , take a series of graphQL queries, combine them into one
+--http://package.elm-lang.org/packages/evancz/elm-effects/1.0.0/Effects
 
 port tasks : Signal (Task Effects.Never ())
 port tasks =

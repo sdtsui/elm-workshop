@@ -158,4 +158,37 @@ error: Err String
       <function> : String -> Json.Decode.Decoder a -> Json.Decode.Decoder a
     "Better idea not to define operators..."
 
-_________
+--_________
+{-
+  when we want HTML to change, we return th 
+  when we want to represnet an effect: return a descriotion of what we want done
+  TASKS:  
+    - "a little bit like a promise"
+      - chainable
+      - wrap error handling .catch, .error
+    - "a little bit like a callback"
+-}
+
+
+http get 
+: Decoder value -> String -> Task Error value
+
+
+|>
+\_
+
+
+elm effects:  send tasks, elm runs them behind the scenes (i.e. a batch of tasks, done in update)
+    like react : send virtual dom, react determines what/how to update
+
+
+"We don't tend to sweat organizational stuff, because the compiler takes care of it for us."
+
+
+-- left pipe and right pipe
+-- left pipe  ---FUNCTION TO RUN--- <| ---EXPRESSION TO PASS, ONCE EVALUATED---
+> (<|)
+<function> : (a -> b) -> a -> b
+> (|>)
+<function> : a -> (a -> b) -> b
+--right pipe: ---EXPRESSION TO PASS, ONCE EVALUATED--- |> ---FUNCTION TO RUN, PASSING EXPRESSION AS LAST PARAM---
