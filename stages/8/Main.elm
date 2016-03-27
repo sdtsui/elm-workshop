@@ -6,7 +6,12 @@ import Effects exposing (Effects)
 import Task exposing (Task)
 import Html exposing (Html)
 
-
+--hints:
+  -- must do sorting ourselves
+  -- func on List documentation ... sort from the List
+  -- List.sortBy
+  -- convert from a List, into a Dict, sort by ...
+    -- set result.
 main : Signal Html
 main =
   app.html

@@ -85,8 +85,31 @@ view address model =
 
 viewSearchResults : Address Action -> Dict ResultId SearchResult -> List Html
 viewSearchResults address results =
+  {- 
+  results
+    |> Dict.toList
+    -- method one, map tuple
+    |> List.map snd
+    |> List.map (\searchResult -> viewSearchResult address searchResult)
+    --|> List.map ( (key, value) ) -> 
+  -}
+
+
+  -- MAP METHOD
+  results
+    |> Dict.values
+  --  SORT
+    --|> List.sortBy (\searchResult -> negate searchResult.stars)
+    |> List.sortBy (.stars >> negate )
+    --|> List.reverse
+    |> List.map (\searchResult -> viewSearchResult address searchResult)
+
+
+
+
   -- TODO sort by star count and render
-  []
+  --List.sortBy .stars
+    --|> List.map (\result -> li [] result)
 
 
 onInput address wrap =
@@ -131,11 +154,20 @@ update action model =
       let
         resultsById : Dict ResultId SearchResult
         resultsById =
+          results
+            |> List.map (\result -> (result.id, result ))
+            |> Dict.fromList
+              --attempt: 
+          --List.map (\result -> ( result.id, result)) results
+          --|> Dict.fromList 
+            --prompt: 
           -- TODO convert results list into a Dict
-          Dict.empty
+          --Dict.empty
       in
         ( { model | results = resultsById }, Effects.none )
 
     DeleteById id ->
+      -- easier: 
+      ( { model | results = Dict.remove id model.results}, Effects.none )
       -- TODO delete the result with the given id
-      ( model, Effects.none )
+      --( model, Effects.none )

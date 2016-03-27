@@ -108,7 +108,6 @@ Dictionary Example:
       |> Dict.fromList
       -- case 1 
       |> Dict.get 6 -- returns maybe. Just, 6's value in this case
-
       -- case 2  
       |> Dict.get 99 -- returns nothing
       -- case 3 
@@ -125,3 +124,24 @@ Dictionary Example:
 
           foo : Dict comprable (Dict comparable' someOtherValue)
           "all of the children in an entire dict have to have the same type of value"
+
+___________________________________
+___________________________________
+  stylistic:
+    val
+     |> op1
+     |> op2
+     |> op3
+
+    vs
+    --composing (glue a small number of operations together)
+    op1
+      >> op2
+      >> op3
+      >> op4 
+
+
+    List.filter (.isVisible >> not) 
+    List.filter (not >> .isVisible)
+    |> pipline operator <|    -- val | op
+    >> composition operator <<    -- >> first
