@@ -49,6 +49,14 @@ type alias Model =
   , results : List Component.SearchResult.Model
   }
 
+{-
+  case List.head  results of
+    Just result
+      { result |  expanded  = True  }
+-}
+
+
+
 
 initialModel : Model
 initialModel =
@@ -113,7 +121,11 @@ type Action
   = Search
   | SetQuery String
   | SetResults (List Component.SearchResult.Model)
+  --| UpdateSearchResult DashbpardId ResultId Component.SearchResult.Action
+  --| example for new DashboardId, dynamic signals
   | UpdateSearchResult ResultId Component.SearchResult.Action
+
+
 
 
 update : Action -> Model -> ( Model, Effects Action )
@@ -134,21 +146,22 @@ update action model =
 
     UpdateSearchResult id childAction ->
       let
-        updateResult childModel =
-          if childModel.id == id then
+        updateResult childModel = --single result
+          if childModel.id == id then -- usually only one match
             let
               ( newChildModel, childEffects ) =
-                Component.SearchResult.update childAction childModel
+                Component.SearchResult.update childAction childModel -- 
             in
               ( newChildModel
               , Effects.map (UpdateSearchResult id) childEffects
               )
           else
-            ( childModel, Effects.none )
+            ( childModel, Effects.none ) --usually ignore
 
         ( newResults, effects ) =
           model.results
-            |> List.map updateResult
+            |> List.map updateResult -- piping results
+            -- if this was a dict, then we'd just go Dict.get id, and logic would be simpler
             |> List.unzip
 
         newModel =
