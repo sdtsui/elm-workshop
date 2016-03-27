@@ -19,10 +19,10 @@ console.log("Script")
   // documentation: https://github.com/michael/github
   var github = new Github();
 
-  var app = Elm.embed(
-    Elm.Main,
-    document.getElementById("elm-landing-pad"),
-    {githubResponse: []});
+  var app = Elm.embed(  // add to DOM
+    Elm.Main, // module main, ports attached here, can only have one main
+    document.getElementById("elm-landing-pad"), // insertion point
+    {githubResponse: []}); // incoming signal needs default value
 
   function searchGithub(query) {
     console.log("Searching for", query);

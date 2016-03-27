@@ -9,7 +9,9 @@ import Signal
 import Json.Encode
 import Json.Decode
 
-
+-- only one specific interface to JS with these ports
+  -- only one main...
+    -- module is line 15: looks for lowercase main
 main : Signal Html
 main =
   app.html

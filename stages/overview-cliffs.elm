@@ -4,9 +4,9 @@
 4 - events, update
 5 - decoder, effects (Effects.none, Effects.all), Tasks (success, fail)
 6 - testing
-7
-8
-9
+7 - interop: embed (main, entryPoint, initialState) , workers
+8 - pipelining, sets, dictionaries
+9 - 
 10
 misc, lookups: 
   - converting react components / css into -> Elm views.

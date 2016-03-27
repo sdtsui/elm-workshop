@@ -66,3 +66,27 @@ Q: Containers: easy to think of as lists/arrays
 Maybe.map
 "Maybe is a container that has 0 or 1 things in it."
 
+
+
+
+
+
+--Main : 
+
+
+  elm.main vs elm.fullscreen. 
+      - put the elm app into a div, etc. 
+
+
+
+___________________________________
+___________________________________
+___________________________________
+
+
+Piping: 
+  [1,2,3] 
+    |> List.map (\num -> num * 2) --last arg [2, 4, 6]
+    |> List.map (\num -> num > 2) -- last arg [4,6]
+    |> List.map negate -- last arg [-4, -6]
+    |> List.reverse -- [-6, -4]
