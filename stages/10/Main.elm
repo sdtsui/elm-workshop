@@ -6,6 +6,8 @@ import Effects exposing (Effects)
 import Task exposing (Task)
 import Html exposing (Html)
 
+-- filter repos without stars:  can't use list.filter; use tail recursion or a case expression
+
 
 main : Signal Html
 main =

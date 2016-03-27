@@ -3,6 +3,8 @@ module ElmHub (..) where
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
+import Html.Lazy exposing (..)
+
 import Http
 import Task exposing (Task)
 import Effects exposing (Effects)
@@ -70,14 +72,39 @@ viewSearchResults address results =
     |> Dict.values
     |> List.sortBy (.stars >> negate)
     |> filterResults
-    |> List.map (SearchResult.view address DeleteById)
+    |> List.map (lazy3 SearchResult.view address DeleteById)
 
 
 filterResults : List SearchResult.Model -> List SearchResult.Model
 filterResults results =
+  --results
+
+  case results of
+    [] ->
+      []
+    first :: rest ->
+      if first.stars > 0 then
+        first :: filterResults rest
+      else
+        filterResults rest    
+
+  -- attempt 1:
+  --let 
+  --  filterOutZeroStars : List -> List
+  --  filterOutZeroStars filteredList list =
+  --    case list of
+  --      [] ->
+  --        []
+
+  --    first :: rest -> 
+  --      if first.stars > 0 then
+  --        first :: filterOutZeroStars filteredList rest
+  --      else
+  --        [] :: filterOutZeroStars filteredList rest
+  --in
+  --filterOutZeroStars [] results
   -- TODO filter out repos with 0 stars
   -- using a case-expression rather than List.filter
-  results
 
 
 onInput address wrap =
