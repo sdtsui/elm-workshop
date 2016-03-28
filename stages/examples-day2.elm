@@ -206,3 +206,14 @@ example of a tail recursive helper function: elm's compiles this into a while lo
 
           ::  prepend
           ++ append
+
+
+
+
+
+
+          ___________________________________
+
+          "Model + View + Update" is the most heavyweight way to do things in Elm.
+            Ideally, you should build things as simply as possible. 
+            View won't need a model, an update, etc.

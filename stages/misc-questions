@@ -1,13 +1,38 @@
 question: 
 what does this look like : dynamic signals?
 
-
 elm-css : 
-  - LePort workflow: designers / UX people with frontend experience. .
+  - LP workflow: designers / UX people with frontend experience. .
 
+Do you consider training as an elm dev.
+  - Does it ever make sense to write traditional CSS, using another preprocessor?
+    - SASS / LESS seems 
   _______________________
   _______________________
   _______________________
   _______________________
   _______________________
-  
+"Get Back" Question:
+  - flow, TypeScript
+  - Redux?
+  - immutable. no side effects. typechecker. 
+    -  PROBLEM : can't go back and make all of JS's APIs conform to the above.
+    - Type annotations are really important!
+  _______________________
+css things:
+- margin auto, margin none
+
+typeclasses , polymorphism . 
+  _______________________
+Types on the wire:
+- TransitJS in ClojureScript
+- Evan/Community approach: time, "absorb all of the information on the subject, decide what to do with it."
+  _______________________
+  Main problems with concurrency:
+    - Mutating shared state. 
+  _______________________
+  Core: Evan
+  ~1 dozen
+  Companies : CircuitHub, NoRedInk
+    Futurice (maintaining projects)
+    http://futurice.com/
