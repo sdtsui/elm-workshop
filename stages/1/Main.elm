@@ -13,26 +13,57 @@ model =
       }
   }
 
+--view model =
+--  div 
+--    [class "well"]
+--    [
+--      span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--      , span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+
+--    ]
 
 view model =
-  div
-    [ class "content" ]
-    [ header
-        []
-        [ 
-          text "ElmHub",
-          span [ class "tagline" ] [ text "“Like GitHub, but for Elm things.”" ]
-        ]
-    , ul
-        [ class "results" ]
-        [ li
-            []
-            [ span [ class "star-count" ] [text (toString model.result.stars)]
-              , a [href model.result.link] [text "Link"]
-            ]
-        ]
-    ]
-
+  div 
+    [class "well"]
+    (List.repeat 21 (
+      span [class "well-row"] (List.repeat 11 (div [class "well-box"] []))
+    ))
 
 main =
   view model
